@@ -1,6 +1,5 @@
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-
+import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
@@ -63,5 +62,4 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
 }
