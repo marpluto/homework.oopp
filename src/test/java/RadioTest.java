@@ -17,66 +17,6 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-/*    @Test
-    public void setStationInLimit() {
-        Radio radio = new Radio();
-
-        radio.setCurrentStation(4);
-
-        int expected = 4;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setStationLowerLimit() {
-        Radio radio = new Radio();
-
-        radio.setCurrentStation(0);
-
-        int expected = 0;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setStationUpperLimit() {
-        Radio radio = new Radio();
-
-        radio.setCurrentStation(9);
-
-        int expected = 9;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setStationUnderLowerLimit() {
-        Radio radio = new Radio();
-
-        radio.setCurrentStation(-1);
-
-        int expected = 0;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void setStationAboveUpperLimit() {
-        Radio radio = new Radio();
-
-        radio.setCurrentStation(10);
-
-        int expected = 0;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }*/
-
     @Test
     public void nextStationInLimit() {
         Radio radio = new Radio();
@@ -153,18 +93,6 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    /*@Test
-    public void increaseVolumeLowerLimit() {
-        Radio radio = new Radio();
-
-        radio.increaseVolume();
-
-        int expected = 1;
-        int actual = radio.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }*/
-
     @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/lowerVolumeTests.csv")
     public void lowerVolumeInAllLimits(int volumeLevel, int expected) {
@@ -177,16 +105,4 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
-    /*@Test
-    public void lowerVolumeUnderLowerLimit() {
-        Radio radio = new Radio();
-
-        radio.lowerVolume();
-
-        int expected = 0;
-        int actual = radio.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }*/
 }
