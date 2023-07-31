@@ -1,9 +1,20 @@
+import java.util.concurrent.locks.Condition;
+
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int numOfStation;
+
+    public Radio(int numOfStation) {
+        this.numOfStation = numOfStation;
+    }
+
+    public Radio() {
+        this.numOfStation = 10;
+    }
 
     public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation > 9) {
+        if (newCurrentStation >= numOfStation) {
             return;
         }
         if (newCurrentStation < 0) {
@@ -19,7 +30,7 @@ public class Radio {
 
     public void nexCurrentStation() {
         currentStation += 1;
-        if (currentStation > 9) {
+        if (currentStation >= numOfStation) {
             currentStation = 0;
         }
     }
@@ -27,7 +38,7 @@ public class Radio {
     public void prevCurrentStation() {
         currentStation -= 1;
         if (currentStation < 0) {
-            currentStation = 9;
+            currentStation = numOfStation - 1;
         }
     }
 
