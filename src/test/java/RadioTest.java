@@ -7,10 +7,10 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/setStationTests.csv")
-    public void setStationInAllLimits(int numOfStation, int expected) {
+    public void setStationDefaultInAllLimits(int numOfCurrentStation, int expected) {
         Radio radio = new Radio();
 
-        radio.setCurrentStation(numOfStation);
+        radio.setCurrentStation(numOfCurrentStation);
 
         int actual = radio.getCurrentStation();
 
@@ -18,7 +18,7 @@ public class RadioTest {
     }
 
     @Test
-    public void nextStationInLimit() {
+    public void nextStationDefaultInLimit() {
         Radio radio = new Radio();
 
         radio.nexCurrentStation();
@@ -30,7 +30,7 @@ public class RadioTest {
     }
 
     @Test
-    public void nextStationUpperLimit() {
+    public void nextStationDefaultUpperLimit() {
         Radio radio = new Radio();
 
         radio.setCurrentStation(9);
@@ -43,7 +43,7 @@ public class RadioTest {
     }
 
     @Test
-    public void prevStationInLimit() {
+    public void prevStationDefaultInLimit() {
         Radio radio = new Radio();
 
         radio.setCurrentStation(9);
@@ -56,12 +56,50 @@ public class RadioTest {
     }
 
     @Test
-    public void prevStationLowerLimit() {
+    public void prevStationDefaultLowerLimit() {
         Radio radio = new Radio();
 
         radio.prevCurrentStation();
 
         int expected = 9;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/setCustomStationTests.csv")
+    public void setStationCustomInAllLimits(int numOfStation, int numOfCurrentStation, int expected) {
+        Radio radio = new Radio(numOfStation);
+
+        radio.setCurrentStation(numOfCurrentStation);
+
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/nextStationCustomTests.csv")
+    public void nextStationCustomInAllLimits(int numOfStation, int numOfCurrentStation, int expected) {
+        Radio radio = new Radio(numOfStation);
+
+        radio.setCurrentStation(numOfCurrentStation);
+        radio.nexCurrentStation();
+
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(files = "src/test/resources/prevStationCustomTests.csv")
+    public void prevStationCustomInAllLimits(int numOfStation, int numOfCurrentStation, int expected) {
+        Radio radio = new Radio(numOfStation);
+
+        radio.setCurrentStation(numOfCurrentStation);
+        radio.prevCurrentStation();
+
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
