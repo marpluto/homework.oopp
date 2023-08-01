@@ -1,31 +1,43 @@
-import java.util.concurrent.locks.Condition;
-
 public class Radio {
     private int currentStation;
     private int currentVolume;
-    private int numOfStation;
+    private int numOfStation = 10;
+
+    public Radio() {
+    }
 
     public Radio(int numOfStation) {
         this.numOfStation = numOfStation;
     }
 
-    public Radio() {
-        this.numOfStation = 10;
+    public void setCurrentStation(int currentStation) {
+        if (currentStation >= numOfStation) {
+            return;
+        }
+        if (currentStation < 0) {
+            return;
+        }
+
+        this.currentStation = currentStation;
     }
 
-    public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation >= numOfStation) {
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > 100) {
             return;
         }
-        if (newCurrentStation < 0) {
+        if (currentVolume < 0) {
             return;
         }
 
-        currentStation = newCurrentStation;
+        this.currentVolume = currentVolume;
     }
 
     public int getCurrentStation() {
         return currentStation;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
     public void nexCurrentStation() {
@@ -40,21 +52,6 @@ public class Radio {
         if (currentStation < 0) {
             currentStation = numOfStation - 1;
         }
-    }
-
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume > 100) {
-            return;
-        }
-        if (newCurrentVolume < 0) {
-            return;
-        }
-
-        currentVolume = newCurrentVolume;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     public void increaseVolume() {
