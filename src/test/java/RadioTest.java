@@ -67,6 +67,27 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void setNumOfStationWithSetter() {
+        Radio radio = new Radio();
+        radio.setNumOfStation(15);
+
+        int actual = radio.getNumOfStation();
+        int expected = 15;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getNumOfStationWithoutParameters() {
+        Radio radio = new Radio();
+
+        int actual = radio.getNumOfStation();
+        int expected = 10;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/setCustomStationTests.csv")
     public void setStationCustomInAllLimits(int numOfStation, int numOfCurrentStation, int expected) {
