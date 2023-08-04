@@ -70,7 +70,7 @@ public class RadioTest {
     @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/setCustomStationTests.csv")
     public void setStationCustomInAllLimits(int numOfStation, int numOfCurrentStation, int expected) {
-        Radio radio = new Radio(numOfStation);
+        Radio radio = new Radio(0, 0, numOfStation);
 
         radio.setCurrentStation(numOfCurrentStation);
 
@@ -82,7 +82,7 @@ public class RadioTest {
     @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/nextStationCustomTests.csv")
     public void nextStationCustomInAllLimits(int numOfStation, int numOfCurrentStation, int expected) {
-        Radio radio = new Radio(numOfStation);
+        Radio radio = new Radio(0, 0, numOfStation);
 
         radio.setCurrentStation(numOfCurrentStation);
         radio.nexCurrentStation();
@@ -95,7 +95,7 @@ public class RadioTest {
     @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/prevStationCustomTests.csv")
     public void prevStationCustomInAllLimits(int numOfStation, int numOfCurrentStation, int expected) {
-        Radio radio = new Radio(numOfStation);
+        Radio radio = new Radio(0, 0, numOfStation);
 
         radio.setCurrentStation(numOfCurrentStation);
         radio.prevCurrentStation();
